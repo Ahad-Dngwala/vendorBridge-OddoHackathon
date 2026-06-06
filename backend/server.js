@@ -15,6 +15,12 @@ const vendorRoutes = require("./routes/vendor.routes");
 const rfqRoutes = require("./routes/rfq.routes");
 const quotationRoutes = require("./routes/quotation.routes");
 const approvalRoutes = require("./routes/approval.routes");
+const poRoutes = require("./routes/po.routes");
+const invoiceRoutes = require("./routes/invoice.routes");
+const activityRoutes = require("./routes/activity.routes");
+const dashboardRoutes = require("./routes/dashboard.routes");
+const reportRoutes = require("./routes/report.routes");
+const uploadRoutes = require("./routes/upload.routes");
 
 const PORT = process.env.PORT || 5000;
 
@@ -33,6 +39,12 @@ const startServer = async () => {
     app.use("/api/v1", rfqRoutes);
     app.use("/api/v1", quotationRoutes);
     app.use("/api/v1", approvalRoutes);
+    app.use("/api/v1", poRoutes);
+    app.use("/api/v1", invoiceRoutes);
+    app.use("/api/v1", activityRoutes);
+    app.use("/api/v1", dashboardRoutes);
+    app.use("/api/v1", reportRoutes);
+    app.use("/api/v1", uploadRoutes);
 
     // Global Error Handler
     app.use(errorHandler);

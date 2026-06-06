@@ -130,6 +130,10 @@ exports.actionApproval = catchAsync(async (req, res, next) => {
       // Transition RFQ & Quote cleanly into the execution phase mapped directly to schema ENUM constraints
       await client.query(`UPDATE quotations SET status = 'accepted' WHERE id = $1`, [quotation_id]);
       await client.query(`UPDATE rfqs SET status = 'awarded' WHERE id = $1`, [rfq_id]);
+      
+      // Mirror the awarded and closed status into the rfq_vendors pivot table natively
+      await client.query(`UPDATE rfq_vendors SET status = 'awarded' WHERE rfq_id = $1 AND vendor_id = (SELECT vendor_id FROM quotations WHERE id = $2)`, [rfq_id, quotation_id]);
+      await client.query(`UPDATE rfq_vendors SET status = 'closed' WHERE rfq_id = $1 AND status != 'awarded'`, [rfq_id]);
 
       // Note: We could mark ALL other quotations for this RFQ as 'rejected' optionally.
       await client.query(`UPDATE quotations SET status = 'rejected' WHERE rfq_id = $1 AND id != $2`, [rfq_id, quotation_id]);

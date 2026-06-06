@@ -1,4 +1,4 @@
-# 🏭 VendorBridge — Procurement Management System
+# 🏭 Vendorland — Procurement Management System
 
 > **Oddo Hackathon 2026** | Full-Stack Procurement Automation Platform
 
@@ -41,7 +41,7 @@
 
 ## 🌟 Overview
 
-**VendorBridge** is a comprehensive, role-based procurement management platform that digitizes and automates the entire procurement lifecycle — from vendor onboarding and RFQ generation to quotation comparison, manager approvals, purchase order generation, and invoice management.
+**Vendorland** is a comprehensive, role-based procurement management platform that digitizes and automates the entire procurement lifecycle — from vendor onboarding and RFQ generation to quotation comparison, manager approvals, purchase order generation, and invoice management.
 
 ### Key Features
 
